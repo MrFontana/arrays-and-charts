@@ -9,18 +9,33 @@ let monthlyLabels = Array.of('Oct', 'Nov', 'Dec');
 let deptSales = Array.of(12,9,3);
 let deptLabels = Array.of('Hiking', 'Running', 'Hunting');
 
-function addYearlyTotal(a,b,c) {
-	return a+b+c;
+let yearlyTotal = 0;
+
+function addYearlyTotal(x) {
+	yearlyTotal += x;
 };
+
+monthlySales.forEach(addYearlyTotal);
 
 let octNums = Array.of(1200,1000,9000);
 let novNums = Array.of(1100,2000,9000);
 let decNums = Array.of(4000,1000,5000);
 
-let total = Array.of(addYearlyTotal(...octNums), addYearlyTotal(...novNums), addYearlyTotal(...decNums));
+// let total = Array.of(addYearlyTotal(...octNums), addYearlyTotal(...novNums), addYearlyTotal(...decNums));
 
-let yearlyTotal = addYearlyTotal(...monthlySales);
+// let yearlyTotal = addYearlyTotal(...monthlySales);
 yearlyLabel.innerHTML = `$${yearlyTotal}`;
+
+function findOver1000() {
+	let firstThousand = monthlySales.find(element => element > 1000); // Returns first index value
+	// let firstThousand = monthlySales.findIndex(element => element > 1000); // Returns first index
+	alert(firstThousand);
+};
+
+function resetNum() {
+	monthlySales.fill(0);
+	monthlySalesChart.update();
+};
 
 // Bar
 var monthlySalesChart = new Chart(ctx, {
